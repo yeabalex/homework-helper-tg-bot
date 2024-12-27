@@ -20,8 +20,9 @@ async function handleMessage(ctx) {
         const response = await geminiService.generateResponse(prompt);
         const parsedRes = JSON.parse(response.response).candidates[0].content.parts[0].text
         const formattedResponse = formatMessage(parsedRes);
-
+        console.log(formattedResponse)
         const chunks = formattedResponse.match(/.{1,4000}/g) || [];
+        console.log(chunks)
         
         for (const chunk of chunks) {
             await ctx.reply(chunk, { parse_mode: 'Markdown' });
