@@ -1,5 +1,4 @@
 const axios = require('axios');
-const config = require('../config/config');
 const logger = require('./logger');
 
 class GeminiService {
@@ -16,7 +15,7 @@ class GeminiService {
                     }
                 }),
                 new Promise((_, reject) => 
-                    setTimeout(() => reject(new Error('Timeout')), config.gemini.timeout)
+                    setTimeout(() => reject(new Error('Timeout')), 60000)
                 )
             ]);
 
@@ -24,8 +23,8 @@ class GeminiService {
         } catch (error) {
             logger.error('API error:', { error: error.message, prompt });
 
-            if (retryCount < config.gemini.maxRetries) {
-                logger.info(`Retrying API call (${retryCount + 1}/${config.gemini.maxRetries})`);
+            if (retryCount < 3) {
+                logger.info(`Retrying API call (${retryCount + 1}/3)`);
                 return this.generateResponse(prompt, retryCount + 1);
             }
 
