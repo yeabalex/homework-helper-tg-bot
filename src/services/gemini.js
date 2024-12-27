@@ -33,11 +33,9 @@ class GeminiService {
     }
 
     constructPrompt(question) {
-        return `As a helpful tutor, I'll assist with this homework question. 
-        I'll provide explanations that help you understand, rather than just giving answers.
-        Question: ${question}
+        return `Question: ${question}
         
-        break this down step by step:`;
+        break it down step by step:`;
     }
 }
 
