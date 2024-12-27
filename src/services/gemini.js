@@ -38,7 +38,7 @@ class GeminiService {
         I'll provide explanations that help you understand, rather than just giving answers.
         Question: ${question}
         
-        Let me break this down step by step:`;
+        break this down step by step:`;
     }
 }
 
