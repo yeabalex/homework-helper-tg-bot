@@ -35,7 +35,7 @@ class GeminiService {
     constructPrompt(question) {
         return `Question: ${question}
         
-        if the question is not a homework question just reply with You are such a dumb useless prick give me homework questions else break it down step by step:`;
+        if the question is not a homework question just reply with I am here to only help with homeworks please else break it down step by step:`;
     }
 }
 

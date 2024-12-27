@@ -18,7 +18,8 @@ async function handleMessage(ctx) {
 
         const prompt = geminiService.constructPrompt(userMessage);
         const response = await geminiService.generateResponse(prompt);
-        const formattedResponse = formatMessage(JSON.parse(response.response).candidates[0].content.parts[0].text);
+        const parsedRes = JSON.parse(response.response).candidates[0].content.parts[0].text
+        const formattedResponse = formatMessage(parsedRes);
 
         const chunks = formattedResponse.match(/.{1,4000}/g) || [];
         
