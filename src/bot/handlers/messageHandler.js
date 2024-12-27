@@ -17,9 +17,7 @@ async function handleMessage(ctx) {
         logger.info('Processing homework question', { userId, message: userMessage });
 
         const prompt = geminiService.constructPrompt(userMessage);
-        console.log(prompt)
         const response = await geminiService.generateResponse(prompt);
-        console.log(response)
         const formattedResponse = formatMessage(JSON.parse(response.response).candidates[0].content.parts[0].text);
 
         const chunks = formattedResponse.match(/.{1,4000}/g) || [];
